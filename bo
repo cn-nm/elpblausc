@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Menú de Fresas y Duraznos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header-logo">
+        <img src="https://i.postimg.cc/GhL8zJd0/419002565-252764604507723-2682269556903557705-n.png" alt="Logo" class="logo">
+        <p>Elige tu producto y completa todos tus datos</p>
+    </div>
+    <div class="menu-container">
+        <header>
+            <img src="https://i.postimg.cc/GhL8zJd0/419002565-252764604507723-2682269556903557705-n.png" alt="Logo" class="logo">
+            <h1>Menú el Poblau</h1>
+        </header>
+        <div class="category">
+            <h2>COMIDAS</h2>
+            <div class="product-container">
+                <!-- Product 1 -->
+                <div class="product">
+                    <h2>SALCHIYUCA</h2>
+                    <img src="https://i.postimg.cc/pTTpMcb2/SALCHI-yuca.png" alt="SALCHIYUCA" class="product-image" onclick="zoomImage(this)">
+                    <p>
+                        <ul>
+                            <li>Cama de yuca frita y hervida</li>
+                            <li>2 alitas de pollo</li>
+                            <li>3 chorizos parrilleros picados</li>
+                            <li>200 gramos de punta de S picada</li>
+                        </ul>
+                        <span class="price">Precio: 40 Bolivianos</span>
+                    </p>
+                    <div class="quantity">
+                        <button class="minus" onclick="changeQuantity('product1', -1)">-</button>
+                        <span id="product1-quantity">0</span>
+                        <button class="plus" onclick="changeQuantity('product1', 1)">+</button>
+                    </div>
+                    <button class="close-btn" onclick="closeZoom(this)">X</button>
+                </div>
+                <!-- Product 2 -->
+                <div class="product">
+                    <h2>COCA COLA MINI</h2>
+                    <img src="https://i.postimg.cc/m2Xv18hm/7771609001448-502x502-1-1.png" alt="COCA COLA MINI" class="product-image" onclick="zoomImage(this)">
+                    <p>
+                        <ul>
+                            <li>Soda mini peque de 300 ml</li>
+                        </ul>
+                        <span class="price">Precio: 3.50 Bolivianos</span>
+                    </p>
+                    <div class="quantity">
+                        <button class="minus" onclick="changeQuantity('product2', -1)">-</button>
+                        <span id="product2-quantity">0</span>
+                        <button class="plus" onclick="changeQuantity('product2', 1)">+</button>
+                    </div>
+                    <button class="close-btn" onclick="closeZoom(this)">X</button>
+                </div>
+                <!-- Product 3 -->
+                <div class="product">
+                    <h2>CUADRIL CAMBA</h2>
+                    <img src="https://i.postimg.cc/Zn9YP7zx/CUADRIL-2.png" alt="CUADRIL CAMBA" class="product-image" onclick="zoomImage(this)">
+                    <p>
+                        <ul>
+                            <li>300 gramos de carne seleccionada jugosa</li>
+                            <li>Chorizo parrillero</li>
+                            <li>1 porción de yuca</li>
+                            <li>1 porción de majau de charque</li>
+                        </ul>
+                        <span class="price">Precio: 38 Bolivianos</span>
+                    </p>
+                    <div class="quantity">
+                        <button class="minus" onclick="changeQuantity('product3', -1)">-</button>
+                        <span id="product3-quantity">0</span>
+                        <button class="plus" onclick="changeQuantity('product3', 1)">+</button>
+                    </div>
+                    <button class="close-btn" onclick="closeZoom(this)">X</button>
+                </div>
+            </div>
+        </div>
+        <div class="order-summary">
+            <div class="order-summary-content">
+                <h2>Resumen del Pedido</h2>
+                <ul id="order-summary-list"></ul>
+                <p><b>Precio Total de Productos:</b> <span id="total-price">0.00</span> Bs.</p>
+                <p><b>Precio de Envío:</b> <span id="shipping-price">0.00</span> Bs.</p>
+                <p><b>Total a Pagar:</b> <span id="total-payment">0.00</span> Bs.</p>
+            </div>
+            <label for="client-phone">Número de Teléfono:</label>
+            <input type="text" id="client-phone" placeholder="Ingrese su número de teléfono" class="phone-input" inputmode="tel">
+            <span id="phone-warning" style="color: red; display: none;">Por favor, ingrese su número de teléfono.</span>
+            <label for="client-reference">Referencia del domicilio:</label>
+            <input type="text" id="client-reference" placeholder="Ingrese referencia de la casa" class="reference-input">
+            <span id="reference-warning" style="color: red; display: none;">Por favor, ingrese una referencia de la casa.</span>
+            <label for="client-name">Nombre o Apodo del Cliente:</label>
+            <input type="text" id="client-name" placeholder="Ingrese su nombre o apodo" class="reference-input">
+            <span id="name-warning" style="color: red; display: none;">Por favor, ingrese su nombre o apodo.</span>
+            <a id="buy-button" class="buy-button disabled" href="javascript:void(0)" onclick="sendWhatsAppMessage()">Realizar Pedido</a>
+            <p>Selecciona tu ubicación</p>
+        </div>
+    </div>
+
+    <div id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d237.42703185469273!2d-63.18758706565188!3d-17.799567098136823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDQ3JzU4LjUiUyA2M8KwMTEnMTUuMCJX!5e0!3m2!1ses!2sbo!4v1721748541157!5m2!1ses!2sbo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="footer">@Elpoblausc - Todos los derechos reservados 2024</div>
+
+    <div id="order-confirmation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Su pedido llegará en un aproximado de 30 minutos o menos.</p>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
